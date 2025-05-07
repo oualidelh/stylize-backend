@@ -1,7 +1,6 @@
 // File: backend/routes/stylize.mjs
 import express from "express";
-import gradio from "@gradio/client"; // ✅ Default import
-const { Client } = gradio;
+import { Client } from "@gradio/client";
 import { stylePrompts } from "../lib/style-prompts.js";
 import { analyzeImageContent } from "../utils/image-analyzer.js";
 import {
