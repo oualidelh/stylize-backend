@@ -1,25 +1,22 @@
-// File: backend/routes/stylize.js
-const express = require("express");
-const { Client } = require("@gradio/client");
-const { stylePrompts } = require("../lib/style-prompts");
-const { analyzeImageContent } = require("../utils/image-analyzer");
-const {
+// File: backend/routes/stylize.mjs
+import express from "express";
+import { Client } from "@gradio/client";
+import { stylePrompts } from "../lib/style-prompts.js";
+import { analyzeImageContent } from "../utils/image-analyzer.js";
+import {
   createEnhancedPrompt,
   recommendStrength,
   recommendIterations,
-} = require("../utils/prompt-enhancer");
+} from "../utils/prompt-enhancer.js";
 
 const router = express.Router();
 
-// Convert base64 to Buffer
 function base64ToBuffer(dataUrl) {
   const matches = dataUrl.match(/^data:(.+);base64,(.+)$/);
   if (!matches) throw new Error("Invalid base64 string");
-
   return Buffer.from(matches[2], "base64");
 }
 
-// Process Image using Gradio API
 async function processImage({
   imageInput,
   prompt = "fantasy landscape",
@@ -32,7 +29,6 @@ async function processImage({
     const app = await Client.connect("sweetpotatoman/SDXL-Turbo-Img2Img-CPU");
 
     const buffer = base64ToBuffer(imageInput);
-    // Convert buffer to Blob for Gradio client
     const blob = new Blob([buffer], { type: "image/png" });
 
     const result = await app.predict("/predict", [
@@ -89,7 +85,6 @@ async function getRandomSeed() {
   }
 }
 
-// Main stylization endpoint
 router.post("/", async (req, res) => {
   try {
     const {
@@ -163,12 +158,9 @@ router.post("/", async (req, res) => {
   }
 });
 
-// Cancellation endpoint
 router.post("/cancel", async (req, res) => {
   try {
-    // In a production environment, implement actual cancellation logic here
     console.log("Received stylization cancellation request");
-
     return res.json({
       success: true,
       message: "Stylization cancellation requested",
@@ -182,4 +174,4 @@ router.post("/cancel", async (req, res) => {
   }
 });
 
-module.exports = router;
+export default router;
