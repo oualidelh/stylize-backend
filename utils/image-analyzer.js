@@ -7,7 +7,7 @@
  * @param {string} imageData - Base64 encoded image data
  * @returns {Promise<object>} Analysis results
  */
-async function analyzeImageContent(imageData) {
+export async function analyzeImageContent(imageData) {
   // In a production app, you might use a computer vision API here
   // For this example, we'll return simplified mock data
 
