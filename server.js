@@ -1,8 +1,8 @@
 // File: backend/server.js
-const express = require("express");
-const cors = require("cors");
-const morgan = require("morgan");
-const stylizeRoutes = require("./routes/stylize");
+import express from "express";
+import cors from "cors";
+import morgan from "morgan";
+import stylizeRoutes from "./routes/stylize.js";
 
 // Initialize express app
 const app = express();
