@@ -21,7 +21,7 @@ const defaultOptions = {
  * @param {object} options - Options for prompt enhancement
  * @returns {string} Enhanced prompt for the image model
  */
-function createEnhancedPrompt(style, analysis, options = {}) {
+export function createEnhancedPrompt(style, analysis, options = {}) {
   // Get the base prompt for the selected style from imported stylePrompts
   const { stylePrompts } = require("../lib/style-prompts");
   const basePrompt = stylePrompts[style];
@@ -207,7 +207,7 @@ function createEnhancedPrompt(style, analysis, options = {}) {
  * @param {object} analysis - The results of image content analysis
  * @returns {number} Recommended strength value between 0.1-1.0
  */
-function recommendStrength(analysis) {
+export function recommendStrength(analysis) {
   // Base strength - higher preserves more of the original drawing
   let strength = 0.7;
 
@@ -240,7 +240,7 @@ function recommendStrength(analysis) {
  * @param {object} analysis - The results of image content analysis
  * @returns {number} Recommended iterations value between 1-5
  */
-function recommendIterations(analysis) {
+export function recommendIterations(analysis) {
   // Base iterations
   let iterations = 2;
 
