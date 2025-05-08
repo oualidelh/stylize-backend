@@ -1,4 +1,4 @@
-// File: backend/routes/stylize.mjs
+// File: backend/routes/stylize.js
 import express from "express";
 import { Client } from "@gradio/client";
 import { stylePrompts } from "../lib/style-prompts.js";

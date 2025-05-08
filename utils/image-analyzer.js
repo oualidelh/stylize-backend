@@ -43,7 +43,3 @@ function determineMainSubject(imageData) {
   const subjects = ["tree", "person", "landscape", "object", "water"];
   return subjects[Math.floor(Math.random() * subjects.length)];
 }
-
-module.exports = {
-  analyzeImageContent,
-};
