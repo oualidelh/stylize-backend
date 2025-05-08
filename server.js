@@ -10,7 +10,16 @@ const PORT = process.env.PORT || 3001;
 
 // Apply middleware
 app.use(morgan("dev")); // Logging
-app.use(cors()); // Enable CORS for all routes
+app.use(
+  cors({
+    origin: [
+      "https://collaborative-whiteboard-client-only.vercel.app",
+      "http://localhost:3000",
+    ],
+    methods: ["GET", "POST"],
+    credentials: true,
+  })
+); // Enable CORS for all routes
 app.use(express.json({ limit: "50mb" })); // Increase payload limit for image data
 
 // Health check route
