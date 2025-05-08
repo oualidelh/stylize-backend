@@ -1,6 +1,8 @@
 // File: backend/utils/prompt-enhancer.js
 // Migrated from utils/prompt-enhancer.ts
 
+import { stylePrompts } from "../lib/style-prompts.js";
+
 /**
  * Options for enhancing prompts
  */
@@ -23,7 +25,6 @@ const defaultOptions = {
  */
 export function createEnhancedPrompt(style, analysis, options = {}) {
   // Get the base prompt for the selected style from imported stylePrompts
-  const { stylePrompts } = require("../lib/style-prompts");
   const basePrompt = stylePrompts[style];
 
   // Set default options if not provided
@@ -258,9 +259,3 @@ export function recommendIterations(analysis) {
 
   return iterations;
 }
-
-module.exports = {
-  createEnhancedPrompt,
-  recommendStrength,
-  recommendIterations,
-};
